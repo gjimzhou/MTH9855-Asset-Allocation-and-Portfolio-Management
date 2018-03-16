@@ -1,0 +1,91 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{subfigure}
+
+\title{MTH 9855 Homework 5}
+\author{Junliang Zhou}
+
+\begin{document}
+\maketitle
+
+\section{Problem 5.1}
+
+The data set accompanying this homework gives daily returns for three stocks: TSLA, AAPL, and IBM.\newline
+
+(a) Calculate the historical (regressed, no intercept) beta, for each of these assets as of Dec 31, 2014. In each case, calculate the appropriate t-statistic on the coefficient to test the null hypothesis and state whether you reject the null hypothesis.\newline
+
+(b) Compute the holdings vector $h\in\mathbb{R}^3$ for the unique portfolio which is dollar-neutral (\textit{i.e.} self-financing) and which has unit exposure to AAPL and zero exposure to beta as of Dec 31, 2014.\newline
+
+(c) Compute the daily returns of the portfolio from (b) over the period Jan 1, 2015 to Dec 31, 2015. Assume that each day, the portfolio is rebalanced back to the initial holdings vector $h\in\mathbb{R}^3$. Plot the cumulative sum of the log returns.\newline
+
+(d) Compute the realized correlation of the returns in part (c) to the market's return. Construct a statistical test of the null hypothesis that the correlation is zero. Is the realized  correlation significantly different from zero at the 95\%.\newline
+
+\textit{Proof.}\newline
+
+See to attached Jupyter Notebook.\newline
+
+\section{Problem 5.2}
+
+Suppose you are a fund-of-funds manager with investments in $n$ different hedge funds for some $n\geq 2$. Let $r_i$ denote the annualized return of the $i$-th fund. Suppose that
+
+\[r_i=\beta r_M+\epsilon_i,\quad \text{Var}(\epsilon_i)=\sigma_i^2\]
+where $r_M$ denotes the return of the market portfolio (approximated by the S\&P 500 in the US) with variance $\sigma_M^2$. Suppose that $\epsilon_i$ and $\epsilon_j$ are independent random variables if $i\neq j$, and that $\epsilon_i$ is independent from $r_M$ for all $i=1,...,n$. Suppose that your fund-of-funds has invested $h_i>0$ dollars in the $i$-th hedge fund, so their profit/loss is
+
+\[\pi=h'r=\sum_i{h_i r_i}\]
+Throughout the following, assume $h=(1/n,...,1/n)\in\mathbb{R}^n$ for simplicity, \textit{i.e.} the fund-of-funds has one unit of capital evenly distributed across its constituents.\newline
+
+(a) Calculate $\mathbb{E}[h'r]$ and $\mathbb{V}[h'r]$. Note that $\mathbb{V}[h'r]$ can be expressed as
+\[\mathbb{V}[h'r]=f(\beta,\sigma_M^2)+g(\sigma_1^2,...,\sigma_n^2)\]
+
+Find functions $f()$ and $g()$ explicitly.\newline
+
+(b) Take $\beta=0.5$ and $\sigma_M=0.2$. Assume that each constituent fund has an annualized volatility target of 10\% and all $\sigma_i\approx 0.03$. The "fraction of variance explained by the market" for the fund-of-funds is defined to be $f/(f+g)$. Numerically compute and plot this fraction as a function of $n$ for $n=2,...,30$.\newline
+
+(c) Take the same assumptions as (b). Further assume that each $\epsilon_i$ has a Sharpe ratio of 1.5, so that $\mathbb{E}[i]=1.5\sigma_i$, and the market's expected annual return is $\mathbb{E}[r_M]=0.07$. The fund-of-funds charges a fee of 0.01 on capital. Numerically compute and plot the Sharpe ratio, 
+\[\text{Sharpe Ratio}=\frac{\mathbb{E}[h'r]-0.01}{\sqrt{\mathbb{V}[h'r]}}\]
+
+as a function of $n$ for $n=2,...,30$. How does this change if the Sharpe ratio of $\epsilon_i$ is 2.0 rather than 1.5?\newline
+
+(d) If the fund-of-funds could simply invest in a single fund with the same properties as the others except that this fund has $\beta=0$ and $\sigma_i=0.1$, would that be better or worse, in terms of Sharpe ratio, than the above scenario?\newline
+
+
+\textit{Proof.}\newline
+
+(a):\newline
+
+As $h=(1/n,...,1/n)$,
+\[h'r=\frac{1}{n}\sum_{i=1}^n {r_i}=\beta r_M+\frac{1}{n}\sum_{i=1}^n {\epsilon_i}\]
+
+From that we can calculate the expectation of $h'r$.
+\[\mathbb{E}[h'r]=\beta\mathbb{E}[r_M]+\frac{1}{n}\sum_{i=1}^n {\mathbb{E}[\epsilon_i]}=\beta\mu_M+\frac{1}{n}\sum_{i=1}^n {\mu_i}\]
+
+Since $\epsilon_i$ and $\epsilon_j$ are independent random variables if $i\neq j$, and that $\epsilon_i$ is independent from $r_M$ for all $i=1,...,n$, the variance of $h'r$ can be simplified as
+\[\mathbb{V}[h'r]=\beta^2\mathbb{V}[r_M]+\frac{1}{n^2}\sum_{i=1}^n {\mathbb{V}[\epsilon_i]}=\beta^2\sigma_M^2+\frac{1}{n^2}\sum_{i=1}^n {\sigma_i^2}\]
+
+$\mathbb{V}[h'r]$ can be expressed as
+\[\mathbb{V}[h'r]=f(\beta,\sigma_M^2)+g(\sigma_1^2,...,\sigma_n^2)\]
+
+where
+\[f(\beta,\sigma_M^2)=\beta^2\sigma_M^2\]
+\[g(\sigma_1^2,...,\sigma_n^2)=\frac{1}{n^2}\sum_{i=1}^n {\sigma_i^2}\]
+
+(b), (c), and (d):\newline
+
+See to attached Jupyter Notebook.\newline
+
+\end{document}
