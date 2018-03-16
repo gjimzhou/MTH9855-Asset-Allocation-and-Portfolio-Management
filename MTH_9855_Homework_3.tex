@@ -1,0 +1,114 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{MTH 9855 Homework 3}
+\author{Junliang Zhou}
+
+\begin{document}
+\maketitle
+
+\section{Problem 3.1}
+
+Find the explicit solution for $x^{*}$ by applying the block matrix inversion formula to
+\[
+\begin{bmatrix}
+    P & A^\intercal \\
+    A & 0
+\end{bmatrix}
+\begin{bmatrix}
+    x^{*} \\
+    v^{*}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    -q \\
+    b
+\end{bmatrix}
+\]
+which matrices must you assume are invertible for this formula to apply? If $P$ is positive semi-definite but has a non-trivial null space, what can you say about existence and uniqueness of solutions to the original equality-constrained optimization problem that lead to the formula?\newline
+
+\textit{Proof.}\newline
+
+If $P$ and $A P^{-1} {A^\intercal}$ is invertible, we can solve the formula explicitly as
+\[
+\begin{bmatrix}
+    x^{*} \\
+    v^{*}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    P & A^\intercal \\
+    A & 0
+\end{bmatrix}
+^{-1}
+\begin{bmatrix}
+    -q \\
+    b
+\end{bmatrix}
+\]
+
+By applying the block matrix inversion formula, we have
+\[
+\begin{bmatrix}
+    P & A^\intercal \\
+    A & 0
+\end{bmatrix}
+^{-1}
+=
+\begin{bmatrix}
+    P^{-1}-P^{-1} {A^\intercal} {(A P^{-1} {A^\intercal})^{-1}} A P^{-1} & P^{-1} {A^\intercal} {(A P^{-1} {A^\intercal})^{-1}} \\
+    {(A P^{-1} {A^\intercal})^{-1}} A P^{-1} & -{(A P^{-1} {A^\intercal})^{-1}}
+\end{bmatrix}
+\]
+
+We can conclude that
+\[x^{*}= {(P^{-1} {A^\intercal} {(A P^{-1} {A^\intercal})^{-1}} A P^{-1} - P^{-1})}q + P^{-1} {A^\intercal} {(A P^{-1} {A^\intercal})^{-1}} b \]
+
+If $P$ is positive semi-definite but has a non-trivial null space, the solution for $x^{*}$ exist but is not unique.
+
+\section{Problem 3.2}
+
+Suppose now that $p^{*}(u,v)$ is differentiable at $u=0, v=0$. Then, provided strong duality holds, show that
+\[\lambda_i^{*}=-\frac{\partial p^{*}}{\partial u_i} {(0,0)}, \quad \nu_j^{*}=-\frac{\partial p^{*}}{\partial v_j} {(0,0)}\]
+
+\textit{Proof.}\newline
+
+Suppose we have the primal problem
+\[\min_x f_0(x)\]
+\[\text{s.t.} \quad f_i(x) \leq u_i, h_j(x)=v_i, \forall i,j\]
+
+By strong duality, we have
+\[p^{*}(0,0)=g(\lambda^{*},\nu^{*})=\inf_x L(x,\lambda^{*},\nu^{*})\]
+
+Substitute $L(x,\lambda^{*},\nu^{*})$ into the equation,
+\[p^{*}(0,0) \leq f_0(x) + \sum_i {\lambda_i^{*} f_i(x)} + \sum_j {\nu_j^{*} h_j(x)}\]
+\[p^{*}(0,0)-p^{*}(u,v) \leq \sum_i {\lambda_i^{*} u_i} + \sum_j {\nu_j^{*} v_i}\]
+
+Taking $u_i \rightarrow 0^{+}$, we have
+\[-\frac{\partial p^{*}}{\partial u_i} {(0,0)} \leq \lambda_i^{*}\]
+
+Taking $u_i \rightarrow 0^{-}$, we have
+\[-\frac{\partial p^{*}}{\partial u_i} {(0,0)} \geq \lambda_i^{*}\]
+
+Therefore,
+\[\lambda_i^{*}=-\frac{\partial p^{*}}{\partial u_i} {(0,0)}\]
+
+Similarly we can get
+\[\nu_j^{*}=-\frac{\partial p^{*}}{\partial v_j} {(0,0)}\]
+
+\end{document}

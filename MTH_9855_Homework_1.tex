@@ -1,0 +1,157 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{MTH 9855 Homework 1}
+\author{Junliang Zhou}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1.1}
+
+Prove that an agent is risk-averse, i.e. inequality
+\[\mathbb{E}[u(w+\tilde{z})] \leq u(w+\mathbb{E}[\tilde{z}])\]
+holds for all $w$ and $\tilde{z}$, if and only if $u()$ is concave.\newline
+
+\textit{Proof.}\newline
+
+Jensen's inequality states $\forall X$ as a random variable, $\phi()$ is a concave function if and only if
+\[\phi(\mathbb{E}[X]) \geq \mathbb{E}[\phi(X)]\]
+
+"$\Rightarrow$":\newline
+
+Let $X=w+\tilde{z}$, then we have
+\[\mathbb{E}[u(w+\tilde{z})] = \mathbb{E}[u(X)] \leq u(\mathbb{E}[X]) = u(w+\mathbb{E}[\tilde{z}])\]
+
+by applying Jensen's inequality directly.\newline
+
+"$\Leftarrow$":\newline
+
+Let $X=w+\tilde{z}$, then we have
+\[\mathbb{E}[u(X)] \leq u(\mathbb{E}[X])\]
+
+holds for all $X$.\newline
+
+Therefore, by applying Jensen's inequality $u()$ is a concave function.
+
+\section{Problem 1.2}
+
+Show that when $u(w) = -\text{exp}(-\kappa w)/\kappa$ and $\tilde{w}$ is normally distributed with mean $\mu$ and variance $\sigma^2$, then the Arrow-Pratt approximation is exact.\newline
+
+\textit{Proof.}\newline
+
+$u(\tilde{w}) = -\text{exp}(-\kappa \tilde{w})/\kappa$ is log-normally distributed, thus
+\[\mathbb{E}[u(\tilde{w})]=-\frac{1}{\kappa}\mathbb{E}[\text{exp}(-\kappa \tilde{w})]=-\frac{1}{\kappa}\text{exp}(-\kappa\mu+\frac{1}{2}\kappa^2 \sigma^2)\]
+
+For $u()$, we have
+\[u'(\tilde{w})=\text{exp}(-\kappa \tilde{w})\]
+\[u''(\tilde{w})=-\kappa\text{exp}(-\kappa \tilde{w})\]
+
+As a result,
+\[A(\tilde{w})=-\frac{u''(\tilde{w})}{u'(\tilde{w})}=\kappa\]
+
+Since risk premium is defined as
+\[\mathbb{E}[u(\tilde{w})]=u(\mu-\Pi)\]
+
+we have
+\[u(\mu-\Pi)=-\frac{1}{\kappa}\text{exp}(-\kappa(\mu-\frac{1}{2}\kappa\sigma^2))\]
+
+Therefore,
+\[\Pi=\frac{1}{2}\sigma^2 A(\tilde{w})\]
+
+for normally distributed random variable $\tilde{w}$.
+
+\section{Problem 1.3}
+
+Prove the following three conditions are equivalent:
+\begin{enumerate}[(a)]
+\item Agent $v$ is more risk-averse than agent $u$;
+\item For all $w$, $A_v(w) \geq A_u(w)$;
+\item Function $v$ is a concave transformation of function $u$, meaning $\exists\phi, \phi'>0, \phi''<0$ s.t. $v(w)=\phi(u(w))$.
+\end{enumerate}
+
+\textit{Proof.}\newline
+
+"(a)$\Rightarrow$(c)":\newline
+
+Suppose $\exists\phi$ s.t. $v()=\phi(u())$. Since $u()$ and $v()=\phi(u())$ are both monotonically increasing functions and
+\[v'(w)=\phi'(u(w))u'(w)\]
+
+$\phi()$ is also a monotonically increasing function.\newline
+
+Agent $v$ is more risk-averse than agent $u$ indicates that $\Pi_v>\Pi_u$. Then by monotonic property, 
+\[v(w-\Pi_v)<\phi(u(w-\Pi_u))\]
+
+Apply the definition of risk premium to the equation,
+\[\mathbb{E}[v(w)]<\phi(\mathbb{E}[u(w)])\]
+\[\mathbb{E}[\phi(u(w)]<\phi(\mathbb{E}[u(w)])\]
+
+By Jensen's inequality $\phi()$ is a concave function.\newline
+
+"(c)$\Rightarrow$(a)":\newline
+
+Similarly, function $v$ is a concave transformation of function $u$ indicates that
+\[\mathbb{E}[\phi(u(w)]<\phi(\mathbb{E}[u(w)])\]
+\[\mathbb{E}[v(w)]<\phi(\mathbb{E}[u(w)])\]
+
+Then by monotonic property, 
+\[v(w-\Pi_v)<\phi(u(w-\Pi_u))\]
+
+which shows $\Pi_v>\Pi_u$ since $u(), v()$ and $\phi()$ are all monotonically increasing functions.\newline
+
+"(b)$\Rightarrow$(c)":\newline
+
+From the definition of $A(w)$, we have
+\[A_u(w)=-\frac{u''(w)}{u'(w)}\]
+\[A_v(w)=-\frac{v''(w)}{v'(w)} = -\frac{\phi'(u(w))u''(w)+\phi''(u(w))(u'(w))^2}{\phi'(u(w))u'(w)}\]
+
+Since $\phi'(u(w))>0$ as we shown above, $A_v(w) \geq A_u(w)$ is equivalent to
+\[-\frac{\phi'(u(w))u''(w)}{\phi'(u(w))u'(w)} \geq -\frac{\phi'(u(w))u''(w)+\phi''(u(w))(u'(w))^2}{\phi'(u(w))u'(w)}\]
+
+\[\frac{\phi''(u(w))(u'(w))^2}{\phi'(u(w))u'(w)} \leq 0\]
+
+To satisfy the inequality, $\phi''(u(w)) \leq 0$ has to hold for all $w$. Therefore, $\phi()$ is a concave function.\newline
+
+"(c)$\Rightarrow$(b)":\newline
+
+Similarly, using the properties we proved before, we can construct the inequality,
+\[-\frac{\phi'(u(w))u''(w)}{\phi'(u(w))u'(w)} \geq -\frac{\phi'(u(w))u''(w)+\phi''(u(w))(u'(w))^2}{\phi'(u(w))u'(w)}\]
+
+holds for all $w$.\newline
+
+Thus we have $A_v(w) \geq A_u(w)$ holds for all $w$.
+
+\section{Problem 1.4}
+
+Consider a function $v()$ such that $v(x)=a+bu(x)$ for all $x$, for some pair of scalars $a$ and $b$, where $b>0$. Show that a decision-maker with utility function $v()$ makes the same decisions and has the same certainty-equivalents as a decision maker with utility function $u()$.\newline
+
+\textit{Proof.}\newline
+
+We will prove the statement by showing they share the same risk premium $\Pi$.\newline
+
+The risk premium of a decision maker with utility function $u()$ is defined as
+\[\mathbb{E}[u(w+\tilde{z})]=u(w-\Pi)\]
+
+where $\tilde{z}$ is a random variable with mean 0.\newline
+
+As for a decision-maker with utility function $v()$,
+\[\mathbb{E}[v(w+\tilde{z})]=\mathbb{E}[a+bu(w+\tilde{z})]=a+bu(w-\Pi)=v(w-\Pi)\]
+
+Clearly, two decision-makers share the same risk premium $\Pi$.\newline
+
+\end{document}
