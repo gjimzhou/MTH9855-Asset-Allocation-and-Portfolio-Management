@@ -25,15 +25,17 @@
 
 \section{Problem 5.1}
 
-The data set accompanying this homework gives daily returns for three stocks: TSLA, AAPL, and IBM.\newline
+The data set accompanying this homework gives daily returns for three stocks: TSLA, AAPL, and IBM.
 
-(a) Calculate the historical (regressed, no intercept) beta, for each of these assets as of Dec 31, 2014. In each case, calculate the appropriate t-statistic on the coefficient to test the null hypothesis and state whether you reject the null hypothesis.\newline
+\begin{enumerate}[(a)]
+\item Calculate the historical (regressed, no intercept) beta, for each of these assets as of Dec 31, 2014. In each case, calculate the appropriate t-statistic on the coefficient to test the null hypothesis and state whether you reject the null hypothesis.
 
-(b) Compute the holdings vector $h\in\mathbb{R}^3$ for the unique portfolio which is dollar-neutral (\textit{i.e.} self-financing) and which has unit exposure to AAPL and zero exposure to beta as of Dec 31, 2014.\newline
+\item Compute the holdings vector $h\in\mathbb{R}^3$ for the unique portfolio which is dollar-neutral (\textit{i.e.} self-financing) and which has unit exposure to AAPL and zero exposure to beta as of Dec 31, 2014.
 
-(c) Compute the daily returns of the portfolio from (b) over the period Jan 1, 2015 to Dec 31, 2015. Assume that each day, the portfolio is rebalanced back to the initial holdings vector $h\in\mathbb{R}^3$. Plot the cumulative sum of the log returns.\newline
+\item Compute the daily returns of the portfolio from (b) over the period Jan 1, 2015 to Dec 31, 2015. Assume that each day, the portfolio is rebalanced back to the initial holdings vector $h\in\mathbb{R}^3$. Plot the cumulative sum of the log returns.
 
-(d) Compute the realized correlation of the returns in part (c) to the market's return. Construct a statistical test of the null hypothesis that the correlation is zero. Is the realized  correlation significantly different from zero at the 95\%.\newline
+\item Compute the realized correlation of the returns in part (c) to the market's return. Construct a statistical test of the null hypothesis that the correlation is zero. Is the realized  correlation significantly different from zero at the 95\%.
+\end{enumerate}
 
 \textit{Proof.}\newline
 
@@ -49,20 +51,21 @@ where $r_M$ denotes the return of the market portfolio (approximated by the S\&P
 \[\pi=h'r=\sum_i{h_i r_i}\]
 Throughout the following, assume $h=(1/n,...,1/n)\in\mathbb{R}^n$ for simplicity, \textit{i.e.} the fund-of-funds has one unit of capital evenly distributed across its constituents.\newline
 
-(a) Calculate $\mathbb{E}[h'r]$ and $\mathbb{V}[h'r]$. Note that $\mathbb{V}[h'r]$ can be expressed as
+\begin{enumerate}[(a)]
+\item Calculate $\mathbb{E}[h'r]$ and $\mathbb{V}[h'r]$. Note that $\mathbb{V}[h'r]$ can be expressed as
 \[\mathbb{V}[h'r]=f(\beta,\sigma_M^2)+g(\sigma_1^2,...,\sigma_n^2)\]
 
-Find functions $f()$ and $g()$ explicitly.\newline
+Find functions $f()$ and $g()$ explicitly.
 
-(b) Take $\beta=0.5$ and $\sigma_M=0.2$. Assume that each constituent fund has an annualized volatility target of 10\% and all $\sigma_i\approx 0.03$. The "fraction of variance explained by the market" for the fund-of-funds is defined to be $f/(f+g)$. Numerically compute and plot this fraction as a function of $n$ for $n=2,...,30$.\newline
+\item Take $\beta=0.5$ and $\sigma_M=0.2$. Assume that each constituent fund has an annualized volatility target of 10\% and all $\sigma_i\approx 0.03$. The "fraction of variance explained by the market" for the fund-of-funds is defined to be $f/(f+g)$. Numerically compute and plot this fraction as a function of $n$ for $n=2,...,30$.
 
-(c) Take the same assumptions as (b). Further assume that each $\epsilon_i$ has a Sharpe ratio of 1.5, so that $\mathbb{E}[i]=1.5\sigma_i$, and the market's expected annual return is $\mathbb{E}[r_M]=0.07$. The fund-of-funds charges a fee of 0.01 on capital. Numerically compute and plot the Sharpe ratio, 
+\item Take the same assumptions as (b). Further assume that each $\epsilon_i$ has a Sharpe ratio of 1.5, so that $\mathbb{E}[i]=1.5\sigma_i$, and the market's expected annual return is $\mathbb{E}[r_M]=0.07$. The fund-of-funds charges a fee of 0.01 on capital. Numerically compute and plot the Sharpe ratio, 
 \[\text{Sharpe Ratio}=\frac{\mathbb{E}[h'r]-0.01}{\sqrt{\mathbb{V}[h'r]}}\]
 
-as a function of $n$ for $n=2,...,30$. How does this change if the Sharpe ratio of $\epsilon_i$ is 2.0 rather than 1.5?\newline
+as a function of $n$ for $n=2,...,30$. How does this change if the Sharpe ratio of $\epsilon_i$ is 2.0 rather than 1.5?
 
-(d) If the fund-of-funds could simply invest in a single fund with the same properties as the others except that this fund has $\beta=0$ and $\sigma_i=0.1$, would that be better or worse, in terms of Sharpe ratio, than the above scenario?\newline
-
+\item If the fund-of-funds could simply invest in a single fund with the same properties as the others except that this fund has $\beta=0$ and $\sigma_i=0.1$, would that be better or worse, in terms of Sharpe ratio, than the above scenario?
+\end{enumerate}
 
 \textit{Proof.}\newline
 

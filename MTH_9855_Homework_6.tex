@@ -1,0 +1,52 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{subfigure}
+
+\title{MTH 9855 Homework 6}
+\author{Junliang Zhou}
+
+\begin{document}
+\maketitle
+
+\section{Problem 6.1}
+
+Use the Sherman-Morrison-Woodbury matrix inversion lemma to derive a simple expression for the inverse of the covariance matrix in an APT model. In other words, derive an expression for $\Sigma^{-1}$ where
+
+\[\Sigma=\mathbb{V}[R]=XFX'+D\]
+where $D$ is diagonal and $X$ is $n\times p$ and as usual we assume $p\ll n$. Any matrices being inverted should be either diagonal or $p\times p$.\newline
+
+\textit{Proof.}\newline
+
+By Sherman-Morrison-Woodbury matrix inversion lemma, we have
+\[\Sigma^{-1}={(XFX'+D)}^{-1}=D^{-1}-D^{-1} X {(F^{-1}+X' D^{-1} X)}^{-1} X' D^{-1}\]
+
+\section{Problem 6.2}
+
+Show that, for any $n\times p$ real matrix $X$ (not necessarily full rank) and $n$-vector $Y$, the following are equal:
+
+\begin{enumerate}[(a)]
+\item $\lim_{\delta \to 0^{+}} {(X'X+\delta I)}^{-1} X'Y$
+\item The smallest-norm element of $\text{argmin}_b \lVert Y-Xb \rVert$.
+\item $VS^{+}U'Y$ where $X=USV'$ is the SVD of $X$
+\end{enumerate}
+
+\textit{Proof.}\newline
+
+See to attached Jupyter Notebook.\newline
+
+\end{document}
