@@ -41,12 +41,42 @@ Show that, for any $n\times p$ real matrix $X$ (not necessarily full rank) and $
 
 \begin{enumerate}[(a)]
 \item $\lim_{\delta \to 0^{+}} {(X'X+\delta I)}^{-1} X'Y$
-\item The smallest-norm element of $\text{argmin}_b \lVert Y-Xb \rVert$.
+\item The minimum-norm element of $\text{arg}\min_b \lVert Y-Xb \rVert$
 \item $VS^{+}U'Y$ where $X=USV'$ is the SVD of $X$
 \end{enumerate}
 
 \textit{Proof.}\newline
 
-See to attached Jupyter Notebook.\newline
+"(a)$\Leftrightarrow$(b)":\newline
+
+By taking the first order condition, $(X'X+\delta I)^{-1}X'Y$ is chosen to minimize the following optimization problem,
+\[\min_b \left(\lVert Y-Xb \rVert^2 + \delta \lVert b \rVert^2 \right)\]
+
+That is,
+\[(X'X+\delta I)^{-1}X'Y=\text{arg}\min_b \left(\lVert Y-Xb \rVert^2 + \delta \lVert b \rVert^2 \right)\]
+
+where the optimization problem is equivalent to the Lagrange multiplier of the following constrained optimization problem,
+\[\min_b \lVert Y-Xb \rVert^2\]
+\[\text{s.t.}\quad \lVert b \rVert^2 \leq c,\quad c\in\mathbb{R}^{+}\]
+
+As $\delta\to 0^{+}$, it is equivalent to that the constraint $c\to\infty$, the problem becomes unconstrained. Therefore, 
+\[\lim_{\delta\to 0^{+}}(X'X+\delta I)^{-1} X'Y =\text{arg}\min_b \lVert Y-Xb \rVert\]
+
+"(b)$\Leftrightarrow$(c)":\newline
+
+By taking the first order condition of the following optimization problem,
+\[\min_b \lVert Y-Xb \rVert^2\]
+
+we have
+\[X'Y=X'Xb\]
+
+Substitute the SVD $X=USV'$ into the first order condition,
+\[VS'U'Y=VS'SV'b\]
+
+Left multiply the above equation by $V'$, ${(S'S)}^{+}$, then $V$ accordingly, and it becomes
+\[VS^{+}U'Y=b\]
+
+where
+\[S^{+}={(S'S)}^{+} S'\]
 
 \end{document}
