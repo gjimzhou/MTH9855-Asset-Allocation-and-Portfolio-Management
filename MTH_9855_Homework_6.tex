@@ -64,19 +64,18 @@ As $\delta\to 0^{+}$, it is equivalent to that the constraint $c\to\infty$, the 
 
 "(b)$\Leftrightarrow$(c)":\newline
 
-By taking the first order condition of the following optimization problem,
-\[\min_b \lVert Y-Xb \rVert^2\]
+From above we know that
+\[X'Y=(X'X+\delta I)b\]
 
-we have
-\[X'Y=X'Xb\]
+Substitute the SVD $X=USV'$ into the equation, and as $V$ is a orthogonal matrix,
+\[VS'U'Y=(VS'SV'+\delta VIV')b=V(S'S+\delta I)V'b\]
 
-Substitute the SVD $X=USV'$ into the first order condition,
-\[VS'U'Y=VS'SV'b\]
+Since $(S'S+\delta I)$ is guaranteed to be invertible even if $X$ is not full rank, we have
+\[V (S'S+\delta I)^{-1} S'U'Y=b\]
 
-Left multiply the above equation by $V'$, ${(S'S)}^{+}$, then $V$ accordingly, and it becomes
-\[VS^{+}U'Y=b\]
+As $\delta\to 0^{+}$, $b$ converges to $VS^{+}U'Y$ where
+\[\lim_{\delta\to 0^{+}}(S'S+\delta I)^{-1} S'=S^{+}\]
 
-where
-\[S^{+}={(S'S)}^{+} S'\]
+which is one of the properties of pseudo-inverse matrices.\newline 
 
 \end{document}
