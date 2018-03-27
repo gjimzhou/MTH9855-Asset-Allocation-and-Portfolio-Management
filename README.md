@@ -1,7 +1,7 @@
 # MTH9855-Asset-Allocation-and-Portfolio-Management
 ## Homework Collection: Asset Allocation and Portfolio Management
 
-MTH9855 Asset Allocation and Portfolio Management is a graduated course for students of Baruch MFE Program.
+MTH9855 Asset Allocation and Portfolio Management is a graduate course for students of Baruch MFE Program.
 
 
 
