@@ -53,6 +53,11 @@ Homework 6 is related to this lecture.
 
 ### Lecture 7: Multi-Factor Models and Optimization
 
-Homework 7 is related to this lecture.
+No homeworks for this lecture.
 
+
+
+### Lecture 8: Black-Litterman Optimization
+
+No homeworks for this lecture.
 
