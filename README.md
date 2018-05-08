@@ -61,3 +61,26 @@ No homeworks for this lecture.
 
 No homeworks for this lecture.
 
+
+
+### Lecture 9: Advanced Black-Litterman Theory
+
+Homework 7 is related to this lecture.
+
+
+
+### Lecture 10: Transaction Cost
+
+No homeworks for this lecture.
+
+
+
+### Lecture 11: Optimization with Costs
+
+Homework 8 is related to this lecture.
+
+
+
+### Lecture 11: Smart Beta Strategies: Risk Budgeting and Parity
+
+Homework 9 is related to this lecture.
