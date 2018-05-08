@@ -81,6 +81,6 @@ Homework 8 is related to this lecture.
 
 
 
-### Lecture 11: Smart Beta Strategies: Risk Budgeting and Parity
+### Lecture 12: Smart Beta Strategies: Risk Budgeting and Parity
 
 Homework 9 is related to this lecture.
