@@ -84,3 +84,7 @@ Homework 8 is related to this lecture.
 ### Lecture 12: Smart Beta Strategies: Risk Budgeting and Parity
 
 Homework 9 is related to this lecture.
+
+## License and course materials
+
+The existing [GPL](LICENSE) is retained for my original source-code implementation, except where otherwise noted. Course assignments, instructor material, templates and third-party data are not newly licensed here. Existing valid grants and attribution remain intact. See [NOTICE](NOTICE) and [data provenance](DATA-SOURCES.md).
